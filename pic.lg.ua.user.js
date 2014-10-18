@@ -5,7 +5,7 @@
 // @include     http://pic.lg.ua/*
 // @grant       none
 // @updateURL   https://github.com/gameclamp/pic.lg.ua/raw/master/pic.lg.ua.user.js
-// @version     3
+// @version     4
 // ==/UserScript==
 var dq = function (a) {
     return document.querySelector(a);
@@ -15,7 +15,7 @@ var a = locaPath.match('/l/g/') || locaPath.match(/\/l\/(?=\w{5,})/) || locaPath
 switch (a.toString()) {
     case '/l/g/':
         $('#links_group_block').before('<textarea type="text" onclick="this.select()" value="" readonly="readonly" class="span-19" id="links" style="height:130px;margin-bottom:-50px"></textarea>')
-        $('#image_menu').append('<li><label onclick="showlink(\'bbs\');">论坛外链</label></li><li><label onclick="showlink(\'html\');">网页外链</label></li>')
+        $('#image_menu').append('<li><label onclick="showlink(\'bbs\');">论坛外链</label></li><li><label onclick="showlink(\'html\');">网页外链</label></li><li><label onclick="showlink(\'orig\');">原图地址</label></li>')
         $('input[id^="html"]').each(function () {
             this.value = this.value.match(/<img src=".*?>/) [0].replace('/md_', '/');
         })
@@ -39,6 +39,11 @@ switch (a.toString()) {
                 case 'html':
                     $('input[id^="original"]').each(function () {
                         links += '<img src="' + $(this).val() + '" />\n';
+                    })
+                    break;
+                case 'orig':
+                    $('input[id^="original"]').each(function () {
+                        links +=  $(this).val() + '\n';
                     })
                     break;
             }
