@@ -4,7 +4,7 @@
 // @description 整理pic.lg.ua的上传完成页连接，添加批量获取外链连接，汉化部分网页内容
 // @include     http://pic.lg.ua/*
 // @grant       none
-// @updateURL   
+// @updateURL   https://github.com/gameclamp/pic.lg.ua/raw/master/pic.lg.ua.user.js
 // @version     3
 // ==/UserScript==
 var dq = function (a) {
